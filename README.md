@@ -5,10 +5,11 @@
 
 #### 데이터 분석 순서
 1. Data Exploration 데이터 탐색
-필요한 라이브러리: pandas
-참고: https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf
-데이터 읽기
-df = pd.read_csv("파일이름")
+- 필요한 라이브러리: pandas
+- 참고: https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf
+
+1.1. 데이터 읽기
+- df = pd.read_csv("파일이름")
 
 데이터 내용 미리 보기
 df.head()
