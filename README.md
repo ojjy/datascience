@@ -1,7 +1,7 @@
 # datascience
 
 
-#### 순서
+#### 데이터 분석 순서
 1. Data Exploration
 2. Visualization
 3. Feature Engineering
