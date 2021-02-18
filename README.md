@@ -11,28 +11,28 @@
 1.1. 데이터 읽기
 - df = pd.read_csv("파일이름")
 
-데이터 내용 미리 보기
-df.head()
-df.tail()
-df.sample()
+1.2. 데이터 내용 미리 보기
+- df.head()
+- df.tail()
+- df.sample()
 
-컬럼종류보기
-df.columns
+1.3. 컬럼종류보기
+- df.columns
 
-요약정보 보기 -데이터 타입 및 결측치 확인
-df.info()
+1.4. 요약정보 보기 -데이터 타입 및 결측치 확인
+- df.info()
 
-행열의 갯수
-df.shape
+1.5. 행열의 갯수
+- df.shape
 
-데이터의 기초통계량 확인
-df.describe()
+1.6. 데이터의 기초통계량 확인
+- df.describe()
 
-각 컬럼별 데이터 갯수
-df.count()
+1.7. 각 컬럼별 데이터 갯수
+- df.count()
 
-해당 컬럼의 데이터의 종류와 각 데이터 갯수
-df["컬럼이름"].value_counts()
+1.8. 해당 컬럼의 데이터의 종류와 각 데이터 갯수
+- df["컬럼이름"].value_counts()
 ex. df["xyz_campaign_id"].value_counts()
 1178    625
 936     464
