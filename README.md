@@ -4,6 +4,8 @@
 다음을 숙지하고 데이터 분석을 하면 흐름을 이해할수 있어 무작정하는것보다 이해도가 높을수 있다.
 
 #### 데이터 분석 순서
+1. Data Exploration 데이터 탐색 -> 2. Visualization 시각화를 통한 데이터 인사이트 얻기 -> 3. Feature Engineering 아웃라이어나 결측치 처리 -> 4. Modeling DS, RF, XGB.. 등등 모델링 -> 5. Predict 정확도 
+
 1. Data Exploration 데이터 탐색
 - 필요한 라이브러리: pandas
 - 참고: https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf
@@ -45,10 +47,10 @@ Name: xyz_campaign_id, dtype: int64
 
 
 
-3. Visualization
-4. Feature Engineering
-5. Modeling
-6. Predict
+2. Visualization
+3. Feature Engineering
+4. Modeling
+5. Predict
 
 - 학습시키는 방법(기본중에 기본)
 1. clf - 분류기 로드
