@@ -54,9 +54,13 @@ Name: xyz_campaign_id, dtype: int64
 
 
 2. Visualization
-3. Feature Engineering
-4. Modeling
-5. Predict
+필요한 라이브러리: matplotlib, seaborn
+
+4. Feature Engineering
+결측지, outliner제거
+
+6. Modeling
+7. Predict
 
 - 학습시키는 방법(기본중에 기본)
 1. clf - 분류기 로드
