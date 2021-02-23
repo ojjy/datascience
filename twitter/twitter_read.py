@@ -28,7 +28,7 @@ secret_file = os.path.join(os.getcwd(), 'secret.json')
 
 with open(secret_file) as f:
     key = json.loads(f.read())
-
+ 
 def get_secret(setting, key=key):
     try:
         return key[setting]
@@ -73,7 +73,7 @@ def sendData(c_socket):
     auth.set_access_token(access_token, access_secret)
     
     twitter_stream = Stream(auth, TweetListener(c_socket))
-    twiiter_stream = filter(track=['guiter'])
+    twiiter_stream = filter(track=['guitar'])
 
 
 # In[ ]:
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     port = 5555
     s.bind((host, port))
     
-    print(f'listenning on port {port}')
+    print(f"listenning on port {port}")
     
     s.listen(5)
     c, addr = s.accept()
