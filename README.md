@@ -33,7 +33,10 @@
 1.7. 각 컬럼별 데이터 갯수
 - df.count()
 
-1.8. 해당 컬럼의 데이터의 종류와 각 데이터 갯수
+1.8 결측치 갯수 확인
+df.isnull().sum()
+
+1.9. 해당 컬럼의 데이터의 종류와 각 데이터 갯수
 - df["컬럼이름"].value_counts()
 
 ex. df["xyz_campaign_id"].value_counts()
