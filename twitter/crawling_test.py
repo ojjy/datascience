@@ -30,11 +30,11 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-text_query="Biden"
-count = 150
+text_query="tiger woods"
+count = 20
 try:
     tweets = tweepy.Cursor(api.search, q=text_query).items(count)
-    tweets_list = [[tweet.created_at, tweet.id, tweet.text] for tweet in tweets]
+    tweets_list = [[f"{tweet.text}\n" ] for tweet in tweets]
     print(tweets_list)
     tweets_df = pd.DataFrame(tweets_list)
     print(tweets_df)
