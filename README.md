@@ -59,16 +59,19 @@ Name: xyz_campaign_id, dtype: int64
 2. Visualization
 필요한 라이브러리: matplotlib, seaborn
 
-4. Feature Engineering
+3. Feature Engineering
 결측지, outliner제거
 
-6. Modeling
-7. Predict
-
+4. Modeling & Predict
 - 학습시키는 방법(기본중에 기본)
 1. clf - 분류기 로드
+- from sklearn.ensemble import RandomForestClassifier
+- rf_clf = RandomForestClassifier(n_estimators=100)
 2. clf.fit - train데이터 셋 학습
+- rf_clf.fit(x_train, y_train)
 3. clf.predict - test데이터 예측
+- y_pred = rf_clf.predict(x_test)
 4. clf.score - 정확도 측정
+- rf_clf.score(x_test, y_test)
 
 
