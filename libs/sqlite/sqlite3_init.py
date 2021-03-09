@@ -9,40 +9,87 @@ def init_connection(dbf):
         print(e)
     return conn
 
-def create_table(conn, create_tb):
+def create_table(conn):
+    sql = '''
+          CREATE TABLE IF NOT EXISTS test_tb(
+          id integer PRIMARY KEY,
+          name text
+          );
+          '''
     try:
         c = conn.cursor()
-        c.execute(create_tb)
-        print("success to create table")
+        c.execute(sql)
+        sql_print(sql)
     except Exception as e:
         print(e)
 
-
-
 def insert_one_row(conn, insert_vals):
-    sql = ''' INSERT INTO test_tb(id, name)
-                  VALUES(?,?) '''
+    sql = ''' 
+          INSERT INTO test_tb(id, name) VALUES(?,?)
+          '''
     cur = conn.cursor()
     cur.execute(sql, insert_vals)
     conn.commit()
-
+    sql_print(sql)
     return cur.lastrowid
+
+def select_all_rows(conn):
+    sql = """
+    SELECT * from test_tb
+    """
+    print(sql, " execution")
+    cur = conn.cursor()
+    cur.execute(sql)
+    rows = cur.fetchall()
+
+    for row in rows:
+        print(row)
+    sql_print(sql)
+
+def delete_all_rows(conn):
+    sql = """
+    DELETE FROM test_tb
+    """
+    cur = conn.cursor()
+    cur.execute(sql)
+    conn.commit()
+    sql_print(sql)
+    return conn
+
+
+def drop_one_table(conn):
+    sql = """
+    DROP TABLE test_tb
+    """
+
+    cur = conn.cursor()
+    cur.execute(sql)
+    conn.commit()
+    sql_print(sql)
+    return conn
+
+def sql_print(sql):
+    print(f"COMPLETE SQL STMT EXECUTION:: {sql}\n")
 
 if __name__ == "__main__":
     dbf = "test.db"
-    create_tb = """
-    CREATE TABLE IF NOT EXISTS test_tb(
-    id integer PRIMARY KEY,
-    name text
-    );
-    """
+
     conn = init_connection(dbf)
 
     if conn is not None:
-        create_table(conn=conn, create_tb=create_tb)
+        create_table(conn=conn)
     else:
         print("Error")
 
     with conn:
-        insert_vals = (1, "row num 1")
-        insert_one_row(conn, insert_vals)
+        for num in range(1, 10):
+            insert_vals = (num, "row num "+str(num))
+            insert_one_row(conn, insert_vals)
+
+        select_all_rows(conn)
+
+        delete_all_rows(conn)
+        select_all_rows(conn)
+
+        drop_one_table(conn)
+
