@@ -10,12 +10,11 @@ def init_connection(dbf):
     return conn
 
 def create_table(conn):
-    sql = '''
-          CREATE TABLE IF NOT EXISTS test_tb(
-          id integer PRIMARY KEY,
-          name text
-          );
-          '''
+    sql = """CREATE TABLE IF NOT EXISTS test_tb(
+            id integer PRIMARY KEY,
+            name text
+            );
+          """
     try:
         c = conn.cursor()
         c.execute(sql)
@@ -24,9 +23,7 @@ def create_table(conn):
         print(e)
 
 def insert_one_row(conn, insert_vals):
-    sql = ''' 
-          INSERT INTO test_tb(id, name) VALUES(?,?)
-          '''
+    sql = """ INSERT INTO test_tb(id, name) VALUES(?,?)"""
     cur = conn.cursor()
     cur.execute(sql, insert_vals)
     conn.commit()
@@ -34,10 +31,7 @@ def insert_one_row(conn, insert_vals):
     return cur.lastrowid
 
 def select_all_rows(conn):
-    sql = """
-    SELECT * from test_tb
-    """
-    print(sql, " execution")
+    sql = """SELECT * from test_tb"""
     cur = conn.cursor()
     cur.execute(sql)
     rows = cur.fetchall()
@@ -47,23 +41,26 @@ def select_all_rows(conn):
     sql_print(sql)
 
 def delete_all_rows(conn):
-    sql = """
-    DELETE FROM test_tb
-    """
+    sql = """DELETE FROM test_tb"""
     cur = conn.cursor()
     cur.execute(sql)
     conn.commit()
     sql_print(sql)
     return conn
 
-
 def drop_one_table(conn):
-    sql = """
-    DROP TABLE test_tb
-    """
+    sql = """DROP TABLE test_tb"""
 
     cur = conn.cursor()
     cur.execute(sql)
+    conn.commit()
+    sql_print(sql)
+    return conn
+
+def update_one_row(conn, update_vals):
+    sql = """UPDATE test_tb SET id = ?, name = ? WHERE id =? """
+    cur = conn.cursor()
+    cur.execute(sql, update_vals)
     conn.commit()
     sql_print(sql)
     return conn
@@ -82,12 +79,13 @@ if __name__ == "__main__":
         print("Error")
 
     with conn:
-        for num in range(1, 10):
-            insert_vals = (num, "row num "+str(num))
+        for num in range(1, 20):
+            insert_vals=(num, "row num "+str(num))
             insert_one_row(conn, insert_vals)
 
         select_all_rows(conn)
-
+        update_one_row(conn, (101, "row num 10 update", 10))
+        select_all_rows(conn)
         delete_all_rows(conn)
         select_all_rows(conn)
 
