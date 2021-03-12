@@ -38,7 +38,7 @@ INSERT INTO dept (dept_id, dept_name) VALUES ("Computer Science"),
                                              ("Piano"),
                                              ("Economy"),
                                              ("History"),
-                                             ("Law")
+                                             ("Law");
 
 # Insert into Select
 CREATE TABLE IF NOT EXISTS dept_backup(
