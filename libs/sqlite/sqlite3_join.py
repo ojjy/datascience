@@ -40,6 +40,8 @@ INSERT INTO dept (dept_id, dept_name) VALUES ("Computer Science"),
                                              ("History"),
                                              ("Law");
 
+INSERT INTO student (student_num, student_name, dept_id, student_type, adm_date) VALUES (20215002, "김철수", 1, 0, 20210302);
+
 # Insert into Select
 CREATE TABLE IF NOT EXISTS dept_backup(
     dept_id INTEGER AUTOINCREMENT,
