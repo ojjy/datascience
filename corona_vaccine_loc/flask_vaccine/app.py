@@ -12,7 +12,7 @@ app = Flask(__name__)
 def getLatLng(addr):
     print("getLatLng function call")
     url = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + addr
-    headers = {"Authorization": "KakaoAK 9689cf5d703ad53dba79703ad0ebc485"}
+    headers = {"Authorization": "KakaoAK 72232ffd53e66d4f1433f2397db84563"}
     result = json.loads(str(requests.get(url, headers=headers).text))
     print(requests.get(url, headers=headers))
     print(result)
@@ -29,7 +29,7 @@ def base():
     map = folium.Map(
         location=[36.5053542, 127.7043419]
     )
-    addr_lon, addr_lat = getLatLng("대전광역시 유성구 유성대로 976")
+    addr_lon, addr_lat = getLatLng("대전광역시 유성구 유성대로 978")
     return map._repr_html_()
 
 @app.route('/')
@@ -39,8 +39,8 @@ def hello_world():
     # df = pd.read_csv("vacloc.csv")
     df = pd.read_csv("vacloc_20210315.csv")
     # dataframe내 데이터를 db에 넣는다 테이블이 없으면 생성하고 테이블과 데이터가 있으면 삭제하고 다시 생성
-    df.to_sql(name='vaccine_loc', con=dbcon, if_exists='replace')
-    # row갯수 만큼 for문을 돌아서 row들의 데이터를 각각 저장한다 iterrows()
+    # df.to_sql(name='vaccine_loc', con=dbcon, if_exists='replace')
+    # # row갯수 만큼 for문을 돌아서 row들의 데이터를 각각 저장한다 iterrows()
 
     figure = Figure()
     m = Map(location=[36.5053542, 127.7043419], zoom_start=8)
