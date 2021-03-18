@@ -24,6 +24,16 @@ def getLatLng(addr):
 
     return lon, lat
 
+
+@app.route('/test')
+def test_location():
+    map = folium.Map(
+        location=[36.5053542, 127.7043419]
+    )
+    lon, lat = getLatLng("대전광역시 유성구 유성대로 978")
+    Marker(location=[lon, lat], popup="test location", icon=Icon(color='green', icon='flag')).add_to(map)
+    return map._repr_html_()
+
 @app.route('/index')
 def base():
     map = folium.Map(
@@ -52,14 +62,16 @@ def hello_world():
         location_name = df.loc[idx, "시설명"]
         addr = df.loc[idx, "주소"]
         addr_lon, addr_lat = getLatLng(addr)
-    # 데이터내 주소를 지도에 찍는다
-        Marker(location=[addr_lat, addr_lon], popup="<b>"+location_name+"</b>", icon=Icon(color='green', icon='flag')).add_to(m)
+    # 데이터내 주소를 마커형태로 지도에 찍는다
+        Marker(location=[addr_lat, addr_lon], popup="<b>"+location_name+"</b>", tooltip=location_name, icon=Icon(color='green', icon='flag')).add_to(m)
     figure.render()
     return m._repr_html_()
 
 if __name__ == '__main__':
-
-    app.run()
+    print(folium.__version__)
+    host_addr = '0.0.0.0'
+    port_num = '8080'
+    app.run(host=host_addr, port=port_num, debug=True)
 
 
 # References
