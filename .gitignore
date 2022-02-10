@@ -142,3 +142,4 @@ Untitled.*
 secret.json
 *.db
 *.json
+data_eng/data/*
